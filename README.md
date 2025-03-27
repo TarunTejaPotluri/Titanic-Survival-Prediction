@@ -1,4 +1,4 @@
-## Titanic Survival Prediction 🚢⚓
+## Titanic Survival Prediction 
 
 This repository contains a machine learning model that predicts whether a passenger survived the Titanic disaster based on various features like age, gender, ticket class, and fare. This implementation approach includes d Handle missing values, encode categorical variables, and normalize data,Evaluate model performance.
 
