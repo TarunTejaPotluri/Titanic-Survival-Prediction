@@ -30,21 +30,19 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
-from xgboost import XGBClassifier
-from sklearn.neural_network import MLPClassifier
-from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score
 ```
 
 ### Load Dataset
 ```python
-file_path = "/mnt/data/tested.csv"
+file_path = "/content/tested.csv"
 df = pd.read_csv(file_path)
 ```
 
 ### Drop Unnecessary Columns
 ```python
-df.drop(columns=['PassengerId', 'Name', 'Ticket', 'Cabin'], inplace=True, errors='ignore')
+df.drop(columns=['PassengerId', 'Name', 'Ticket', 'Cabin'], inplace=True)
 ```
 
 ### Handle Missing Values
@@ -58,6 +56,8 @@ df.loc[:, 'Fare'] = df['Fare'].fillna(df['Fare'].median())
 ```python
 le = LabelEncoder()
 df.loc[:, 'Sex'] = le.fit_transform(df['Sex'])
+
+# Check if 'Embarked' exists before encoding
 if 'Embarked' in df.columns:
     df = pd.get_dummies(df, columns=['Embarked'], drop_first=True)
 ```
@@ -78,29 +78,22 @@ X_test[['Age', 'Fare']] = scaler.transform(X_test[['Age', 'Fare']])
 
 ### Train Multiple Models
 ```python
-models = {
-    "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42),
-    "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric='logloss', random_state=42),
-    "Neural Network": MLPClassifier(hidden_layer_sizes=(100,), max_iter=500, random_state=42)
-}
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+y_pred = model.predict(X_test)
 ```
 
 ### Evaluate Models
 ```python
-for name, model in models.items():
-    model.fit(X_train, y_train)
-    y_pred = model.predict(X_test)
-    accuracy = accuracy_score(y_test, y_pred)
-    precision = precision_score(y_test, y_pred)
-    recall = recall_score(y_test, y_pred)
-    f1 = f1_score(y_test, y_pred)
-    report = classification_report(y_test, y_pred)
-    print(f"\n{name} Model Performance:")
-    print(f"Accuracy: {accuracy:.4f}")
-    print(f"Precision: {precision:.4f}")
-    print(f"Recall: {recall:.4f}")
-    print(f"F1 Score: {f1:.4f}")
-    print("\nClassification Report:\n", report)
+accuracy = accuracy_score(y_test, y_pred)
+precision = precision_score(y_test, y_pred)
+recall = recall_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
+
+print(f"Accuracy: {accuracy:.4f}")
+print(f"Precision: {precision:.4f}")
+print(f"Recall: {recall:.4f}")
+print(f"F1 Score: {f1:.4f}")
 ```
 
 
