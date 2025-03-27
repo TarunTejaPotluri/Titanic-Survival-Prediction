@@ -117,6 +117,10 @@ The trained model is evaluated using:
 2️. Install dependencies: `pip install -r requirements.txt`  
 3️. Run the script: `python titanic_survival.py`  in google colab for Easy Execution.
 
+## Ececution Video
+[Execution Video](https://drive.google.com/file/d/1FTGEId46qnnSqGrFOyqwXRliGS55kT02/view?usp=sharing)
+
+
 ## Conclusion
 This implementation effectively meets the evaluation criteria for functionality, code quality, innovation, and documentation, making it a well-structured and high-performing solution.
 
