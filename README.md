@@ -23,7 +23,7 @@ The dataset includes the following key features:
 5. Model Training using Random Forest Classifier  
 6. Performance Evaluation  
 
-## GOOGLE Code Implementation
+## GOOGLE COLAB Code Implementation
 ### Import Libraries
 ```python
 import pandas as pd
