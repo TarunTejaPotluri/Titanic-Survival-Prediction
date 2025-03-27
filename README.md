@@ -16,12 +16,12 @@ The dataset includes the following key features:
 - **Survived** – Target variable (1 = Survived, 0 = Not Survived)
 
 ## Implementation Steps
-1. Data Cleaning & Preprocessing  
-2. Handling Missing Values  
-3. Encoding Categorical Variables  
-4. Feature Scaling  
-5. Model Training using Random Forest Classifier  
-6. Performance Evaluation  
+1.  Data Cleaning & Preprocessing  
+2.  Handling Missing Values  
+3.  Encoding Categorical Variables  
+4.  Feature Scaling  
+5.  Model Training using Random Forest Classifier  
+6.  Performance Evaluation  
 
 ## GOOGLE COLAB Code Implementation
 ### Import Libraries
