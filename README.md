@@ -98,7 +98,7 @@ The trained model is evaluated using:
 ## How to Run the Code?
 1️. Clone this repository  
 2️. Install dependencies: `pip install -r requirements.txt`  
-3️. Run the script: `python titanic_survival.py`  
+3️. Run the script: `python titanic_survival.py`  in google colab for Easy Execution.
 
 ## Conclusion
 The model demonstrates strong predictive performance and can be further improved using hyperparameter tuning and feature engineering. Future enhancements could include trying different models like XGBoost or Neural Networks.
