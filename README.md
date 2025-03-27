@@ -79,8 +79,6 @@ print(f"Recall: {recall:.4f}")
 print(f"F1 Score: {f1:.4f}")
 print("\nClassification Report:\n", report)
 
-# Conclusion
-print("\nConclusion: The Titanic Survival Prediction model successfully classifies passengers' survival with an accuracy of {:.2f}%. ")
 ```
 
 ## Evaluation Metrics
