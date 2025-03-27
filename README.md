@@ -1,4 +1,4 @@
-## Titanic Survival Prediction 
+# Titanic Survival Prediction 
 
 This repository contains a machine learning model that predicts whether a passenger survived the Titanic disaster based on various features like age, gender, ticket class, and fare. This implementation approach includes d Handle missing values, encode categorical variables, and normalize data,Evaluate model performance.
 
@@ -95,7 +95,7 @@ The trained model is evaluated using:
 🔹 **Recall**: Z%  
 🔹 **F1 Score**: W%  
 
-## How to Run the Code?
+## How to Run the Code? (GOOGLE COLAB)
 1️. Clone this repository  
 2️. Install dependencies: `pip install -r requirements.txt`  
 3️. Run the script: `python titanic_survival.py`  in google colab for Easy Execution.
