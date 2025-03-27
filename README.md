@@ -83,6 +83,7 @@ print("\nClassification Report:\n", report)
 
 ## Evaluation Metrics
 The trained model is evaluated using:
+
 ✔ **Accuracy**: Measures overall prediction correctness  
 ✔ **Precision**: Fraction of correctly predicted survivors  
 ✔ **Recall**: Fraction of actual survivors correctly identified  
