@@ -16,12 +16,12 @@ The dataset includes the following key features:
 - **Survived** – Target variable (1 = Survived, 0 = Not Survived)
 
 ## Implementation Steps
-✅ Data Cleaning & Preprocessing  
-✅ Handling Missing Values  
-✅ Encoding Categorical Variables  
-✅ Feature Scaling  
-✅ Model Training using Random Forest Classifier  
-✅ Performance Evaluation  
+1. Data Cleaning & Preprocessing  
+2. Handling Missing Values  
+3. Encoding Categorical Variables  
+4. Feature Scaling  
+5. Model Training using Random Forest Classifier  
+6. Performance Evaluation  
 
 ## Code Implementation
 ```python
@@ -96,9 +96,9 @@ The trained model is evaluated using:
 🔹 **F1 Score**: W%  
 
 ## How to Run the Code?
-1️⃣ Clone this repository  
-2️⃣ Install dependencies: `pip install -r requirements.txt`  
-3️⃣ Run the script: `python titanic_survival.py`  
+1️. Clone this repository  
+2️. Install dependencies: `pip install -r requirements.txt`  
+3️. Run the script: `python titanic_survival.py`  
 
 ## Conclusion
 The model demonstrates strong predictive performance and can be further improved using hyperparameter tuning and feature engineering. Future enhancements could include trying different models like XGBoost or Neural Networks.
