@@ -24,62 +24,86 @@ The dataset includes the following key features:
 6. Performance Evaluation  
 
 ## Code Implementation
+### Import Libraries
 ```python
 import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import LabelEncoder, StandardScaler
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.ensemble import RandomForestClassifier, GradientBoostingClassifier
+from xgboost import XGBClassifier
+from sklearn.neural_network import MLPClassifier
 from sklearn.metrics import accuracy_score, precision_score, recall_score, f1_score, classification_report
+```
 
-# Load dataset
+### Load Dataset
+```python
 file_path = "/mnt/data/tested.csv"
 df = pd.read_csv(file_path)
+```
 
-# Drop unnecessary columns
+### Drop Unnecessary Columns
+```python
 df.drop(columns=['PassengerId', 'Name', 'Ticket', 'Cabin'], inplace=True, errors='ignore')
+```
 
-# Handle missing values using recommended method
+### Handle Missing Values
+```python
 df = df.copy()
 df.loc[:, 'Age'] = df['Age'].fillna(df['Age'].median())
 df.loc[:, 'Fare'] = df['Fare'].fillna(df['Fare'].median())
+```
 
-# Encode categorical variables
+### Encode Categorical Variables
+```python
 le = LabelEncoder()
 df.loc[:, 'Sex'] = le.fit_transform(df['Sex'])
 if 'Embarked' in df.columns:
     df = pd.get_dummies(df, columns=['Embarked'], drop_first=True)
+```
 
-# Split dataset into features and target
+### Split Dataset into Features and Target
+```python
 X = df.drop(columns=['Survived'])
 y = df['Survived']
 X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+```
 
-# Standardize numerical features
+### Standardize Numerical Features
+```python
 scaler = StandardScaler()
 X_train[['Age', 'Fare']] = scaler.fit_transform(X_train[['Age', 'Fare']])
 X_test[['Age', 'Fare']] = scaler.transform(X_test[['Age', 'Fare']])
-
-# Train a RandomForest model
-model = RandomForestClassifier(n_estimators=100, random_state=42)
-model.fit(X_train, y_train)
-y_pred = model.predict(X_test)
-
-# Evaluate model performance
-accuracy = accuracy_score(y_test, y_pred)
-precision = precision_score(y_test, y_pred)
-recall = recall_score(y_test, y_pred)
-f1 = f1_score(y_test, y_pred)
-report = classification_report(y_test, y_pred)
-
-# Print results
-print(f"Accuracy: {accuracy:.4f}")
-print(f"Precision: {precision:.4f}")
-print(f"Recall: {recall:.4f}")
-print(f"F1 Score: {f1:.4f}")
-print("\nClassification Report:\n", report)
-
 ```
+
+### Train Multiple Models
+```python
+models = {
+    "Random Forest": RandomForestClassifier(n_estimators=100, random_state=42),
+    "XGBoost": XGBClassifier(use_label_encoder=False, eval_metric='logloss', random_state=42),
+    "Neural Network": MLPClassifier(hidden_layer_sizes=(100,), max_iter=500, random_state=42)
+}
+```
+
+### Evaluate Models
+```python
+for name, model in models.items():
+    model.fit(X_train, y_train)
+    y_pred = model.predict(X_test)
+    accuracy = accuracy_score(y_test, y_pred)
+    precision = precision_score(y_test, y_pred)
+    recall = recall_score(y_test, y_pred)
+    f1 = f1_score(y_test, y_pred)
+    report = classification_report(y_test, y_pred)
+    print(f"\n{name} Model Performance:")
+    print(f"Accuracy: {accuracy:.4f}")
+    print(f"Precision: {precision:.4f}")
+    print(f"Recall: {recall:.4f}")
+    print(f"F1 Score: {f1:.4f}")
+    print("\nClassification Report:\n", report)
+```
+
+
 
 ## Evaluation Metrics
 The trained model is evaluated using:
